@@ -1,0 +1,176 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*Struture*/
+*,
+:after,
+:before {
+	box-sizing: border-box;
+}
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	background: linear-gradient(to top, #5dcfcf, #5259b4, #8052b4);
+}
+/*Inscription*/
+.inscription-wrap {
+	position: relative;
+	margin: auto;
+	width: 100%;
+	max-width: 350px;
+	min-height: 500px;
+	border-radius: 10px;
+	box-shadow: 5px 20px 50px #000;
+}
+.inscription-html {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: 90px 70px 50px 70px;
+	border-radius: 10px;
+	background: rgba(40, 57, 101, 0.9);
+	box-shadow: 5px 20px 50px #000;
+}
+.inscription-html .login-htm,
+.inscription-html .sign-up-htm {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transform: rotateY(180deg);
+	backface-visibility: hidden;
+	transition: all 0.4s linear;
+}
+.inscription-html .login,
+.inscription-html .sign-up {
+	display: none;
+}
+.inscription-html .tab {
+	display: inline-block;
+	margin-right: 15px;
+	padding-bottom: 5px;
+	margin: 0 15px 10px 0;
+	border-bottom: 2px solid transparent;
+	font-size: 22px;
+}
+.inscription-html .login:checked + .tab,
+.inscription-html .sign-up:checked + .tab {
+	color: #fff;
+	border-color: #1161ee;
+}
+
+/*Inputs & buttons*/
+.form {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	min-height: 345px;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+}
+.form input {
+	margin-bottom: 15px;
+}
+.form input,
+.form button {
+	display: block;
+	width: 100%;
+	padding: 15px 20px;
+	border-radius: 25px;
+	border: none;
+	color: #fff;
+	background: rgba(255, 255, 255, 0.1);
+}
+.form button {
+	background: #1161ee;
+}
+.form button:hover,
+.form button:active {
+	background: #8b8b8b;
+}
+
+/*Transitions*/
+.inscription-html .login:checked + .tab + .sign-up + .tab + .form .login-htm {
+	transform: rotate(0);
+}
+.inscription-html .sign-up:checked + .tab + .form .sign-up-htm {
+	transform: rotate(0);
+}
+
+/* --- Snackbar --- */
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+	visibility: hidden; /* Hidden by default. Visible on click */
+	min-width: 250px; /* Set a default minimum width */
+	margin-left: -125px; /* Divide value of min-width by 2 */
+	background-color: #333; /* Black background color */
+	color: #fff; /* White text color */
+	text-align: center; /* Centered text */
+	border-radius: 2px; /* Rounded borders */
+	padding: 16px; /* Padding */
+	position: fixed; /* Sit on top of the screen */
+	z-index: 1; /* Add a z-index if needed */
+	left: 50%; /* Center the snackbar */
+	bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+	visibility: visible; /* Show the snackbar */
+	/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+	to {
+		bottom: 30px;
+		opacity: 1;
+	}
+}
+
+@keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+	to {
+		bottom: 30px;
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeout {
+	from {
+		bottom: 30px;
+		opacity: 1;
+	}
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		bottom: 30px;
+		opacity: 1;
+	}
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
+}
